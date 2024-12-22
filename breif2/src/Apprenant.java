@@ -42,6 +42,7 @@ public class Apprenant extends Personne  {
         System.out.println("2. Modifier un apprenant");
         System.out.println("3. Supprimer un apprenant");
         System.out.println("4. Afficher les apprenants");
+	System.out.println("5. Recharche par ID");
         System.out.print("Choix: ");
         int choix = scanner.nextInt();
         scanner.nextLine();
@@ -51,6 +52,15 @@ public class Apprenant extends Personne  {
             case 2: modifierApprenant(); break;
             case 3: supprimerApprenant(); break;
             case 4: afficherApprenants(); break;
+	    case 5:
+                System.out.println("Enter ID de Formateur tu peut rechercher : ");
+                int id  = scanner.nextInt();
+                Apprenant apprenant =  rechercherFormateurparID(id);
+                if (apprenant == null) {
+                    System.out.println("Id introuvable !");
+                    return;
+                }
+                break;
             default: System.out.println("Choix invalide !"); break;
         }
     }
@@ -131,6 +141,14 @@ public class Apprenant extends Personne  {
             }
         }
     }
+    private static Apprenant rechercherFormateurparID(int id) {
+        for (Apprenant apprenant : apprenants){
+            if (apprenant.getId()==id) {
+                System.out.println(apprenant.toString());
+            }
+        }
+        return null;
+    }
     private static Classe rechercherClasseParNom(String nom) {
         for (Classe classe : Classe.classes) {
             if (classe.getNom().equalsIgnoreCase(nom)) {
@@ -139,4 +157,5 @@ public class Apprenant extends Personne  {
         }
         return null;
     }
+
 }
