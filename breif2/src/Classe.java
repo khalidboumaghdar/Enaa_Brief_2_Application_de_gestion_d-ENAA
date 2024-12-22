@@ -44,7 +44,7 @@ private static int id;
             break;
             case 3 : supprimerClasse();
             break;
-            //case 4 : afficherClasses();
+            case 4 : afficherClasses();
             break;
             default :
                 System.out.println("Choix invalide !");
@@ -81,6 +81,15 @@ private static void supprimerClasse() {
 
         classes.removeIf(classe -> classe.getId() == id);
         System.out.println("Classe supprimée !");
+    }
+private static void afficherClasses() {
+        if (classes.isEmpty()) {
+            System.out.println("Aucune classe trouvée.");
+        } else {
+            for (Classe classe : classes) {
+                System.out.println(classe);
+            }
+        }
     }
 
 }
