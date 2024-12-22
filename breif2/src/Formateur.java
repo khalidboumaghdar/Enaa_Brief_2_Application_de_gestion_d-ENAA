@@ -51,7 +51,7 @@ public class Formateur extends Personne  {
                 ajouterFormateur();
                 break;
             case 2:
-                //modifierFormateur();
+                modifierFormateur();
                 break;
             case 3:
                 //supprimerFormateur();
@@ -81,5 +81,33 @@ public class Formateur extends Personne  {
         double salaire = scanner.nextDouble();
         formateurs.add(new Formateur(nom, prenom, email, specialite, salaire));
         System.out.println("Formateur ajouté !");
+    }
+    private static void modifierFormateur() {
+        System.out.print("ID du formateur à modifier: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        for (Formateur formateur : formateurs) {
+            if (formateur.getId() == id) {
+                System.out.print("Nouveau Nom: ");
+                formateur.setNom(scanner.nextLine());
+                System.out.print("Nouveau Prénom: ");
+                formateur.setPrenom(scanner.nextLine());
+                System.out.print("Nouvel Email: ");
+                formateur.setEmail(scanner.nextLine());
+                System.out.print("Nouvelle Spécialité: ");
+                formateur.setSpecialite(scanner.nextLine());
+                System.out.print("Nouveau Salaire: ");
+                while (!scanner.hasNextDouble()) {
+                    System.out.println("Veuillez entrer un salaire valide !");
+                    scanner.next();
+                }
+                formateur.setSalaire(scanner.nextDouble());
+                scanner.nextLine();
+                System.out.println("Formateur modifié !");
+                return;
+            }
+        }
+        System.out.println("Formateur introuvable !");
     }
 }
