@@ -57,7 +57,7 @@ public class Formateur extends Personne  {
                 supprimerFormateur();
                 break;
             case 4:
-                //afficherFormateurs();
+                afficherFormateurs();
                 break;
             default:
                 System.out.println("Choix invalide !");
@@ -117,5 +117,14 @@ public class Formateur extends Personne  {
 
         formateurs.removeIf(formateur -> formateur.getId() == id);
         System.out.println("Formateur supprimé !");
+    }
+     private static void afficherFormateurs() {
+        if (formateurs.isEmpty()) {
+            System.out.println("Aucun formateur trouvé.");
+        } else {
+            for (Formateur formateur : formateurs) {
+                System.out.println(formateur);
+            }
+        }
     }
 }
