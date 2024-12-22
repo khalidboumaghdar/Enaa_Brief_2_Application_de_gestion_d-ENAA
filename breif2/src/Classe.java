@@ -40,7 +40,7 @@ private static int id;
         switch (choix) {
             case 1 : ajouterClasse();
             break;
-            //case 2 : modifierClasse();
+            case 2 : modifierClasse();
             break;
             //case 3 : supprimerClasse();
             break;
@@ -59,6 +59,20 @@ private static int id;
         System.out.println("Classe ajoutée !");
         id++;
     }
+private static void modifierClasse() {
+        System.out.print("ID de la classe à modifier: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
 
+        for (Classe classe : classes) {
+            if (classe.getId() == id) {
+                System.out.print("Nouveau Nom: ");
+                classe.setNom(scanner.nextLine());
+                System.out.println("Classe modifiée !");
+                return;
+            }
+        }
+        System.out.println("Classe introuvable !");
+    }
 
 }
