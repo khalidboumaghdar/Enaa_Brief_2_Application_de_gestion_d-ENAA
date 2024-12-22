@@ -42,6 +42,7 @@ public class Formateur extends Personne  {
         System.out.println("2. Modifier un formateur");
         System.out.println("3. Supprimer un formateur");
         System.out.println("4. Afficher les formateurs");
+	System.out.println("5. Recharche par ID");
         System.out.print("Choix: ");
         int choix = scanner.nextInt();
         scanner.nextLine();
@@ -58,6 +59,15 @@ public class Formateur extends Personne  {
                 break;
             case 4:
                 afficherFormateurs();
+                break;
+		 case 5:
+                System.out.println("Enter ID de Formateur tu peut rechercher : ");
+                int id  = scanner.nextInt();
+                Formateur formateur =  rechercherFormateurparID(id);
+                if (formateur == null) {
+                    System.out.println("Id introuvable !");
+                    return;
+                }
                 break;
             default:
                 System.out.println("Choix invalide !");
@@ -126,5 +136,13 @@ public class Formateur extends Personne  {
                 System.out.println(formateur);
             }
         }
+    }
+    private static Formateur rechercherFormateurparID(int id) {
+        for (Formateur formateur : formateurs){
+            if (formateur.getId()==id) {
+               System.out.println(formateur.toString());
+            }
+        }
+        return null;
     }
 }
