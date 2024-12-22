@@ -42,7 +42,7 @@ private static int id;
             break;
             case 2 : modifierClasse();
             break;
-            //case 3 : supprimerClasse();
+            case 3 : supprimerClasse();
             break;
             //case 4 : afficherClasses();
             break;
@@ -73,6 +73,14 @@ private static void modifierClasse() {
             }
         }
         System.out.println("Classe introuvable !");
+    }
+private static void supprimerClasse() {
+        System.out.print("ID de la classe à supprimer: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        classes.removeIf(classe -> classe.getId() == id);
+        System.out.println("Classe supprimée !");
     }
 
 }
