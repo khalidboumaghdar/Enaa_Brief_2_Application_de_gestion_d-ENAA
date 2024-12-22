@@ -49,7 +49,7 @@ public class Apprenant extends Personne  {
         switch (choix) {
             case 1: ajouterApprenant(); break;
             case 2: modifierApprenant(); break;
-            //case 3: supprimerApprenant(); break;
+            case 3: supprimerApprenant(); break;
             //case 4: afficherApprenants(); break;
             default: System.out.println("Choix invalide !"); break;
         }
@@ -113,5 +113,13 @@ public class Apprenant extends Personne  {
             }
         }
         System.out.println("Apprenant introuvable !");
+    }
+    private static void supprimerApprenant() {
+        System.out.print("ID de l'apprenant à supprimer: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        apprenants.removeIf(apprenant -> apprenant.getId() == id);
+        System.out.println("Apprenant supprimé !");
     }
 }
