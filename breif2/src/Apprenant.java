@@ -50,7 +50,7 @@ public class Apprenant extends Personne  {
             case 1: ajouterApprenant(); break;
             case 2: modifierApprenant(); break;
             case 3: supprimerApprenant(); break;
-            //case 4: afficherApprenants(); break;
+            case 4: afficherApprenants(); break;
             default: System.out.println("Choix invalide !"); break;
         }
     }
@@ -121,5 +121,22 @@ public class Apprenant extends Personne  {
 
         apprenants.removeIf(apprenant -> apprenant.getId() == id);
         System.out.println("Apprenant supprimé !");
+    }
+    private static void afficherApprenants() {
+        if (apprenants.isEmpty()) {
+            System.out.println("Aucun apprenant trouvé.");
+        } else {
+            for (Apprenant apprenant : apprenants) {
+                System.out.println(apprenant);
+            }
+        }
+    }
+    private static Classe rechercherClasseParNom(String nom) {
+        for (Classe classe : Classe.classes) {
+            if (classe.getNom().equalsIgnoreCase(nom)) {
+                return classe;
+            }
+        }
+        return null;
     }
 }
