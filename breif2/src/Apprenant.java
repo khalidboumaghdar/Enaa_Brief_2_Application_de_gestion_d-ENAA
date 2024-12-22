@@ -48,7 +48,7 @@ public class Apprenant extends Personne  {
 
         switch (choix) {
             case 1: ajouterApprenant(); break;
-            //case 2: modifierApprenant(); break;
+            case 2: modifierApprenant(); break;
             //case 3: supprimerApprenant(); break;
             //case 4: afficherApprenants(); break;
             default: System.out.println("Choix invalide !"); break;
@@ -85,5 +85,33 @@ public class Apprenant extends Personne  {
 
         apprenants.add(new Apprenant(id, nom, prenom, email, classe, notes));
         System.out.println("Apprenant ajouté !");
+    }
+     private static void modifierApprenant() {
+        System.out.print("ID de l'apprenant à modifier: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        for (Apprenant apprenant : apprenants) {
+            if (apprenant.getId() == id) {
+                System.out.print("Nouveau Nom: ");
+                apprenant.setNom(scanner.nextLine());
+                System.out.print("Nouveau Prénom: ");
+                apprenant.setPrenom(scanner.nextLine());
+                System.out.print("Nouvel Email: ");
+                apprenant.setEmail(scanner.nextLine());
+                System.out.print("Nouvelle Classe: ");
+                String classenom = scanner.nextLine();
+
+                Classe classe = rechercherClasseParNom(classenom);
+                if (classe == null) {
+                    System.out.println("Classe introuvable !");
+                    return;
+                }
+                apprenant.setClasse(classe);
+                System.out.println("Apprenant modifié !");
+                return;
+            }
+        }
+        System.out.println("Apprenant introuvable !");
     }
 }
