@@ -73,7 +73,7 @@ public class Formateur extends Personne  {
                 }
                 break;
             default:
-                System.out.println("Choix invalide !");
+                System.out.println("Choix invalide !!!!");
         }
     }
     private static void ajouterFormateur() {
