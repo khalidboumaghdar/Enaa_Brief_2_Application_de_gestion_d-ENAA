@@ -7,18 +7,23 @@ public class Apprenant extends Personne  {
     private static ArrayList<Apprenant> apprenants = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
+
     public Apprenant(int id, String nom, String prenom, String email, Classe classe, ArrayList<Double> notes) {
         super(id, nom, prenom, email);
         this.classe = classe;
         this.notes = notes;
     }
 
-    public int getId() {
-        return id;
+    public Classe getClasse() {
+        return classe;
     }
 
     public void setClasse(Classe classe) {
         this.classe = classe;
+    }
+
+    public ArrayList<Double> getNotes() {
+        return notes;
     }
 
     public void setNotes(ArrayList<Double> notes) {
@@ -28,21 +33,18 @@ public class Apprenant extends Personne  {
     @Override
     public String toString() {
         return "Apprenant{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", classe=" + classe.getNom() +
+                "classe=" + classe +
                 ", notes=" + notes +
-                '}';
+                '}'+super.toString();
     }
+
     public static void gestionApprenants() {
         System.out.println("\n--- Gestion des Apprenants ---");
         System.out.println("1. Ajouter un apprenant");
         System.out.println("2. Modifier un apprenant");
         System.out.println("3. Supprimer un apprenant");
         System.out.println("4. Afficher les apprenants");
-	System.out.println("5. Recharche par ID");
+        System.out.println("5. Recharche par ID");
         System.out.print("Choix: ");
         int choix = scanner.nextInt();
         scanner.nextLine();
@@ -52,7 +54,7 @@ public class Apprenant extends Personne  {
             case 2: modifierApprenant(); break;
             case 3: supprimerApprenant(); break;
             case 4: afficherApprenants(); break;
-	    case 5:
+            case 5:
                 System.out.println("Enter ID de Formateur tu peut rechercher : ");
                 int id  = scanner.nextInt();
                 Apprenant apprenant =  rechercherFormateurparID(id);
@@ -64,7 +66,7 @@ public class Apprenant extends Personne  {
             default: System.out.println("Choix invalide !"); break;
         }
     }
-     private static void ajouterApprenant() {
+    private static void ajouterApprenant() {
         int id = apprenants.size() + 1;
         System.out.print("Nom: ");
         String nom = scanner.nextLine();
@@ -96,7 +98,7 @@ public class Apprenant extends Personne  {
         apprenants.add(new Apprenant(id, nom, prenom, email, classe, notes));
         System.out.println("Apprenant ajouté !");
     }
-     private static void modifierApprenant() {
+    private static void modifierApprenant() {
         System.out.print("ID de l'apprenant à modifier: ");
         int id = scanner.nextInt();
         scanner.nextLine();

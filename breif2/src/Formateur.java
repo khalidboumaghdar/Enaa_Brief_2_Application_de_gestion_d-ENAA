@@ -2,47 +2,50 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Formateur extends Personne  {
- private static int id;
+    private static int id;
     private String specialite;
     private double salaire;
     private static ArrayList<Formateur> formateurs = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
-    public Formateur(String nom, String prenom, String email, String specialite, double salaire) {
-        super(id,nom,prenom,email);
-        this.id = formateurs.size() + 1;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
+    public Formateur(int id, String nom, String prenom, String email, String specialite, double salaire) {
+        super(id, nom, prenom, email);
         this.specialite = specialite;
         this.salaire = salaire;
     }
 
-    public int getId() { return id; }
-    public void setNom(String nom) { this.nom = nom; }
-    public void setPrenom(String prenom) { this.prenom = prenom; }
-    public void setEmail(String email) { this.email = email; }
-    public void setSpecialite(String specialite) { this.specialite = specialite; }
-    public void setSalaire(double salaire) { this.salaire = salaire; }
+    public String getSpecialite() {
+        return specialite;
+    }
+
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
+    }
+
+    public double getSalaire() {
+        return salaire;
+    }
+
+    public void setSalaire(double salaire) {
+        this.salaire = salaire;
+    }
 
     @Override
     public String toString() {
         return "Formateur{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", spécialité='" + specialite + '\'' +
+                "specialite='" + specialite + '\'' +
                 ", salaire=" + salaire +
-                '}';
-    	}
+                '}'+super.toString();
+    }
+
     public static void gestionFormateurs() {
+
         System.out.println("\n--- Gestion des Formateurs ---");
         System.out.println("1. Ajouter un formateur");
         System.out.println("2. Modifier un formateur");
         System.out.println("3. Supprimer un formateur");
         System.out.println("4. Afficher les formateurs");
-	System.out.println("5. Recharche par ID");
+        System.out.println("5. Recharche par ID");
         System.out.print("Choix: ");
         int choix = scanner.nextInt();
         scanner.nextLine();
@@ -60,7 +63,7 @@ public class Formateur extends Personne  {
             case 4:
                 afficherFormateurs();
                 break;
-		 case 5:
+            case 5:
                 System.out.println("Enter ID de Formateur tu peut rechercher : ");
                 int id  = scanner.nextInt();
                 Formateur formateur =  rechercherFormateurparID(id);
@@ -74,6 +77,7 @@ public class Formateur extends Personne  {
         }
     }
     private static void ajouterFormateur() {
+        id  = formateurs.size()+1;
         scanner.nextLine();
         System.out.print("Nom: ");
         String nom = scanner.nextLine();
@@ -89,7 +93,7 @@ public class Formateur extends Personne  {
             scanner.next();
         }
         double salaire = scanner.nextDouble();
-        formateurs.add(new Formateur(nom, prenom, email, specialite, salaire));
+        formateurs.add(new Formateur(id,nom, prenom, email, specialite, salaire));
         System.out.println("Formateur ajouté !");
     }
     private static void modifierFormateur() {
@@ -128,7 +132,7 @@ public class Formateur extends Personne  {
         formateurs.removeIf(formateur -> formateur.getId() == id);
         System.out.println("Formateur supprimé !");
     }
-     private static void afficherFormateurs() {
+    private static void afficherFormateurs() {
         if (formateurs.isEmpty()) {
             System.out.println("Aucun formateur trouvé.");
         } else {
@@ -140,7 +144,7 @@ public class Formateur extends Personne  {
     private static Formateur rechercherFormateurparID(int id) {
         for (Formateur formateur : formateurs){
             if (formateur.getId()==id) {
-               System.out.println(formateur.toString());
+                System.out.println(formateur.toString());
             }
         }
         return null;

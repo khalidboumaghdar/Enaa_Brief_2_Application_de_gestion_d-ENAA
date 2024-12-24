@@ -6,7 +6,7 @@ public class Application {
 
 
     public static void main(String[] args) {
-         Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int choix;
         do {
             System.out.println("\n--- Menu Principal ---");
@@ -15,18 +15,18 @@ public class Application {
             System.out.println("3. Gestion des Classes");
             System.out.println("4. Quitter");
             System.out.print("Choix: ");
-             choix = scanner.nextInt();
+            choix = scanner.nextInt();
 
             switch (choix) {
                 case 1 : Apprenant.gestionApprenants();
-                break;
+                    break;
                 case 2 : Formateur.gestionFormateurs();
-                break;
+                    break;
                 case 3: Classe.gestionClasses();
-                break;
+                    break;
                 case 4:
                     System.out.println("Merci d'avoir utilisé l'application. Au revoir !");
-                break;
+                    break;
                 default :
                     System.out.println("Choix invalide, veuillez réessayer !");
             }
