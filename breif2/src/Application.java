@@ -25,9 +25,9 @@ public class Application {
                 case 3: Classe.gestionClasses();
                     break;
                 case 4:
-                    System.out.println("Merci d'avoir utilisé l'application. Au revoir !");
+                    System.out.println("Merci d'avoir utilisé l'application. Au revoir !!!");
                     break;
-                default :
+          default :
                     System.out.println("Choix invalide, veuillez réessayer !");
             }
         }while (choix!=4);
